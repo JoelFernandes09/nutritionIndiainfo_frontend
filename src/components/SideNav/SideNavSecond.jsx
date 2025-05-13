@@ -17,7 +17,7 @@ import "./SideNav.css";
 import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
 
-const SideNavSecond = ({table,id,dataField,columnName,Start,End,screen,title,componentRef,selLifecycle,selCategory,selIndicator})=>{
+const SideNavSecond = ({table,graphTitle,id,dataField,columnName,Start,End,screen,title,componentRef,selLifecycle,selCategory,selIndicator})=>{
 
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenTable, setIsOpenTable] = useState(false);
@@ -156,7 +156,7 @@ const SideNavSecond = ({table,id,dataField,columnName,Start,End,screen,title,com
                     // style={{ backgroundColor:"red"}}
                 >
                     <TableHeaderColumn dataField={dataField} headerAlign="center" width="200" dataAlign="center" isKey dataSort>{columnName}</TableHeaderColumn>
-                    <TableHeaderColumn dataField='data' headerAlign="center" width='150'  dataAlign="center" >Data</TableHeaderColumn>
+                    <TableHeaderColumn dataField={graphTitle} headerAlign="center" width='150'  dataAlign="center" >{graphTitle}</TableHeaderColumn>
                     <TableHeaderColumn dataField={Start} headerAlign="center" dataAlign="center" width="300">{Start}</TableHeaderColumn>
                     <TableHeaderColumn dataField={End} headerAlign="center" dataAlign="center" >{End}</TableHeaderColumn>
                 </BootstrapTable> 

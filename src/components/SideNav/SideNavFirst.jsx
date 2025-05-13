@@ -17,7 +17,7 @@ import "./SideNav.css";
 import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
 
-const SideNavFirst = ({table,id,dataField,columnName,screen,title,componentRef,selLifecycle,selCategory,selIndicator})=>{
+const SideNavFirst = ({table,graphTitle,id,dataField,columnName,screen,title,componentRef,selLifecycle,selCategory,selIndicator})=>{
 
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenTable, setIsOpenTable] = useState(false);
@@ -155,7 +155,7 @@ const SideNavFirst = ({table,id,dataField,columnName,screen,title,componentRef,s
                     // style={{ backgroundColor:"red"}}
                 >
                     <TableHeaderColumn dataField={dataField}  headerAlign="center" dataAlign="center"  width="500" isKey dataSort>{columnName}</TableHeaderColumn>
-                    <TableHeaderColumn dataField='data' headerAlign="center" dataAlign="center" >Data</TableHeaderColumn>
+                    <TableHeaderColumn dataField={graphTitle} headerAlign="center" dataAlign="center" >{graphTitle}</TableHeaderColumn>
                 </BootstrapTable> 
             </>}
                 handleClose={toggleTablePopup}

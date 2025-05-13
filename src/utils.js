@@ -75,7 +75,6 @@ export async function setVisulaizationData(
   );
 
   // const url_1 =  await fetch(`${solr_domain}/solr/${solr_core}/select?fl=timeperiod_id%2Ctimeperiod%2Cunit_id%2Cunit_name%2Cdata_value%2Cdata_value_num%2Csubgroup_id%2Csubgroup_name%2Csubgroup_category%2Cstart_date%2Cend_date&fq=area_id%3A${area}&fq=indicator_id%3A${indicator}&fq=subgroup_id%3A6&omitHeader=true&q=*%3A*&rows=400&sort=timeperiod_id%20asc`);
-  // console.log('URL', url_1);
   const body_1 = await url_1.json();
   if(url_1.status !== 200)
   {
@@ -241,7 +240,6 @@ export async function populateDropdowns(
   queryIndicator,setHttpStatusCode, setHttpStatusMsg
 ) {
 
-  console.log(`selCategory: ${selCategory}  ,  selLifecycle : ${selLifecycle}`);
   const solr_url_6 = await fetch(
     `${API}/api/v1/url_6u?selCategory=${selCategory}&selLifecycle=${selLifecycle}` , {
       headers:{

@@ -117,7 +117,6 @@ let dynamicRange;
           sortedStateData = selStateData.slice().sort((a, b) => descending(a.data_value_num, b.data_value_num))
       }
       setData(sortedStateData)
-      console.log(sortedStateData,"look")
     }
   }, [toggleStateBurden]);
   let windowWidth = window.screen.width;
@@ -429,7 +428,7 @@ let dynamicRange;
         <FullScreen  className="my-fullScreen w-full bg-white" handle={screen} onChange={reportChange} alt="State wise NFHS-5 Reports">
           <div className='static relative w-full mt-10 md:mt-0 lg:mt-0' id="h_bar" alt="State wise NFHS-5 Reports">
             <div className="block absolute w-full max-h-max right-5" style={{zIndex:1}} alt="State wise NFHS-5 Reports">
-              <SideNavFirst table={table} id="svgBarArea" dataField="area" columnName="Area" screen={screen} title={gBarTitle}  componentRef={ componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator}/>
+              <SideNavFirst table={table} graphTitle={graphTitle} id="svgBarArea" dataField="area" columnName="Area" screen={screen} title={gBarTitle}  componentRef={ componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator}/>
             </div>
             <div className='relative  w-full h-full pb-3 pt-1 pr-3' id="svgBarArea" ref={componentRef} alt="State wise NFHS-5 Reports">
             <div className="absolute  right-5 left-5 mx-10 w-auto top-1">

@@ -101,7 +101,11 @@ export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, tog
         d.start_date = parseTime(d.start_date);
         d.end_date = parseTime(d.end_date);
         d["middle_date"] = new Date((d.start_date.getTime() + d.end_date.getTime())/2);
-        d["timeperiod"] = d.timeperiod.split(" ")[0];
+        if(d["timeperiod"] === "Population Projections 2021" || d["timeperiod"] === `Population Projections ${new Date().getFullYear()}`){
+          d["timeperiod"] = "Projection";
+        }
+        else
+          d["timeperiod"] = d.timeperiod.split(" ")[0];
         cleanData.push(d);
       }
     });
@@ -262,16 +266,16 @@ export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, tog
       //   .text(function(d) { return `${d.data_value} ${d.timeperiod}`; });
 
         bar.selectAll("mytext").data(data).enter().append("text")
-    .attr("x", function(d) { return xScale(xValue(d)); })
-    .attr("y", d => yScale(yValue(d)))
-    .attr("dy", "-1em")
-    .style("text-anchor", "middle")
-    .style("font-size", "11px")
-    .each(function(d) {
-        select(this)
-            .append("tspan")
-            .attr("x", function() { return xScale(xValue(d)); })
-            .text(d.timeperiod);
+        .attr("x", function(d) { return xScale(xValue(d)); })
+        .attr("y", d => yScale(yValue(d)))
+        .attr("dy", "-1em")
+        .style("text-anchor", "middle")
+        .style("font-size", "11px")
+        .each(function(d) {
+            select(this)
+                .append("tspan")
+                .attr("x", function() { return xScale(xValue(d)); })
+                .text(d.timeperiod);
 
         select(this)
             .append("tspan")
@@ -379,7 +383,7 @@ noteDiv = <div className=" absolute left-2 h-10 text-xs"><b>Note: </b>{note}</di
       <FullScreen  className="w-full bg-white h-full" handle={screen} onChange={reportChange}>
         <div className='static relative w-full h-full'>
           <div className="block absolute w-full max-h-max right-5" style={{zIndex:2}}>
-            <SideNavSecond   table={table} id="svgTrend" dataField="timeperiod" columnName="Time Period"  Start="Start" End="End" screen={screen} title={title}  componentRef={componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator}/>
+            <SideNavSecond   table={table} graphTitle={graphTitle} id="svgTrend" dataField="timeperiod" columnName="Time Period"  Start="Start" End="End" screen={screen} title={title}  componentRef={componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator}/>
           </div>
           <div className='relative w-full h-full pb-3 pt-1 pr-3' id="svgTrend" ref={componentRef}>
             <div className="text-center absolute right-5 left-5 mx-10 w-auto  font-bold  text-xs md:text-sm my-trend-title">{`Trend of ${graphTitle}, ${titleAreaName}`}</div>
