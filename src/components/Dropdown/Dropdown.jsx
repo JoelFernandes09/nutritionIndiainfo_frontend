@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
 import { TreeSelect } from 'antd';
 import {
@@ -141,6 +142,9 @@ export const Dropdown = () => {
   const [selDistrictsData, setSelDistrictsData] = useState(null);
   const [toggleStateBurden, setToggleStateBurden] = useState(true);
   const [note, setNote] = useState(null);
+  const [selSubgroup, setSelSubgroup] = useState(6);
+  const [selSubgroupName, setSelSubgroupName] = useState('(Overall)');
+  const isInitialRender = useRef(true);
 
   let burdenIndicators = [34, 43, 47, 36, 37, 51, 42, 63, 56, 31, 78, 66];
 
@@ -181,7 +185,8 @@ export const Dropdown = () => {
         setNote,
         queryIndicator,
         setHttpStatusCode,
-        setHttpStatusMsg
+        setHttpStatusMsg,
+        selSubgroup
       );
       setIsSelected(true);
     }
@@ -218,6 +223,43 @@ export const Dropdown = () => {
     fetchData();
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    async function populateTabData() {
+      if (isInitialRender.current) {
+        isInitialRender.current = false;
+        return;
+      }
+
+      setIsSelected(false);
+      setToggleState(true);
+
+      await setVisulaizationData(
+      selIndicator,
+      selTimeperiod,
+      selArea,
+      parentArea,
+      level,
+      isLevelThree,
+      setIndicatorBar,
+      setIndicatorTrend,
+      setSelIndiaData,
+      setSelStateData,
+      setSwitchDisplay,
+      setSelDistrictsData,
+      setHttpStatusCode,
+      setHttpStatusMsg,
+      selSubgroup
+    );
+
+    setIsSelected(true);
+
+    }
+    
+    populateTabData();
+    
+  }, [selSubgroup]);
+
 let sel_area_names= []
 for (let i = 0; i < areaData.result.docs.length; i++) {
   if(areaData.result.docs[i].area_parent_id==selArea){
@@ -310,7 +352,8 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
       setNote,
       null,
       setHttpStatusCode,
-      setHttpStatusMsg
+      setHttpStatusMsg,
+      selSubgroup
     );
     setToggleStateBurden(true);
     setIsSelected(true);
@@ -345,7 +388,8 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
       setNote,
       null,
       setHttpStatusCode,
-      setHttpStatusMsg
+      setHttpStatusMsg,
+      selSubgroup
     );
     setToggleStateBurden(true);
     setIsSelected(true);
@@ -425,7 +469,8 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
         setSwitchDisplay,
         setSelDistrictsData,
         setHttpStatusCode,
-        setHttpStatusMsg
+        setHttpStatusMsg,
+        selSubgroup
       );
     setIsSelected(true);
   };
@@ -455,7 +500,8 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
       setSwitchDisplay,
       setSelDistrictsData,
       setHttpStatusCode,
-      setHttpStatusMsg
+      setHttpStatusMsg,
+      selSubgroup
     );
     setIsSelected(true);
   };
@@ -557,7 +603,8 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
         setSwitchDisplay,
         setSelDistrictsData,
         setHttpStatusCode,
-        setHttpStatusMsg
+        setHttpStatusMsg,
+        selSubgroup
       );
     setIsSelected(true);
   };
@@ -797,6 +844,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     selCategory={selCategory}
                     selIndicator={selIndicator}
                     note={note}
+                    selSubgroupName={selSubgroupName}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>
@@ -837,6 +885,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     areaName={areaName}
                     titleAreaName={titleAreaName}
                     toggleStateBurden={toggleStateBurden}
+                    selSubgroupName={selSubgroupName}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>
@@ -888,6 +937,8 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     toggleStateBurden={toggleStateBurden}
                     selLifecycle={selLifecycle}
                     selCategory={selCategory}
+                    setSelSubgroup={setSelSubgroup}
+                    setSelSubgroupName={setSelSubgroupName}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>

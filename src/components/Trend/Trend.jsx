@@ -25,7 +25,7 @@ let margin = {
 };
 
 
-export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, toggleStateBurden,selLifecycle,selCategory,selIndicator,note}) => { 
+export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, toggleStateBurden,selLifecycle,selCategory,selIndicator,note, selSubgroupName}) => { 
   let [data, setData] = useState(null);
   const svgRef = useRef();
   const trendWrapper = useRef();
@@ -340,7 +340,7 @@ export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, tog
   if (!data) {
     return <pre>Loading...</pre>;
   }
-  let title='Trend of ' + graphTitle+ ', '+titleAreaName
+  let title='Trend of ' + graphTitle+ ', '+titleAreaName;
 
   let table=[];
   if(data ){
@@ -386,7 +386,7 @@ noteDiv = <div className=" absolute left-2 h-10 text-xs"><b>Note: </b>{note}</di
             <SideNavSecond   table={table} graphTitle={graphTitle} id="svgTrend" dataField="timeperiod" columnName="Time Period"  Start="Start" End="End" screen={screen} title={title}  componentRef={componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator}/>
           </div>
           <div className='relative w-full h-full pb-3 pt-1 pr-3' id="svgTrend" ref={componentRef}>
-            <div className="text-center absolute right-5 left-5 mx-10 w-auto  font-bold  text-xs md:text-sm my-trend-title">{`Trend of ${graphTitle}, ${titleAreaName}`}</div>
+            <div className="text-center absolute right-5 left-5 mx-10 w-auto  font-bold  text-xs md:text-sm my-trend-title">{`Trend of ${graphTitle}, ${titleAreaName} ${selSubgroupName}`}</div>
             <div id="trend_svg" className='align-middle  w-full h-full' ref={trendWrapper}>
               <svg   ref = {svgRef} className="w-full   bg-white  border-black border-dashed object-scale-down"   alt="India State wise NFHS-5 Reports"></svg>
               {noteDiv}

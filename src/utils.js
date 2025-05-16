@@ -64,7 +64,7 @@ export async function setVisulaizationData(
   setSelIndiaData,
   setSelStateData,
   setSwitchDisplay,
-  setSelDistrictsData, setHttpStatusCode, setHttpStatusMsg
+  setSelDistrictsData, setHttpStatusCode, setHttpStatusMsg, subgroup
 ) {
   const url_1 = await fetch(
     `${API}/api/v1/url_1u?area=${area}&indicator=${indicator}` , {
@@ -85,7 +85,7 @@ export async function setVisulaizationData(
   if(url_1.status === 200)
   {
         if (body_1.result.docs.length) {
-        const trendData = body_1.result.docs.filter(data => data.subgroup_id === 6)
+        const trendData = body_1.result.docs.filter(data => data.subgroup_id === subgroup)
         trendData.sort(function(a, b){
             return a.timeperiod_id-b.timeperiod_id
           })
@@ -113,10 +113,10 @@ export async function setVisulaizationData(
   // );
   // const body_2 = await url_2.json();
 
-
+  if(!subgroup) subgroup = 6;
   if (level === 1) {
     const solr_url_3 = await fetch(
-      `${API}/api/v1/url_3u?indicator=${indicator}&timeperiod=${timeperiod}` , {
+      `${API}/api/v1/url_3u?indicator=${indicator}&timeperiod=${timeperiod}&subgroup=${subgroup}` , {
         headers:{
           Authorization:`${token}`
         }
@@ -150,7 +150,7 @@ export async function setVisulaizationData(
       // );
     } else {
       solr_url_4 = await fetch(
-        `${API}/api/v1/url_4c_u?area=${area}&indicator=${indicator}&timeperiod=${timeperiod}` , {
+        `${API}/api/v1/url_4c_u?area=${area}&indicator=${indicator}&timeperiod=${timeperiod}&subgroup=${subgroup}` , {
           headers:{
             Authorization:`${token}`
           }
@@ -237,7 +237,7 @@ export async function populateDropdowns(
   setGraphTimeperiod,
   setIndicatorSense,
   setNote,
-  queryIndicator,setHttpStatusCode, setHttpStatusMsg
+  queryIndicator,setHttpStatusCode, setHttpStatusMsg, selSubgroup
 ) {
 
   const solr_url_6 = await fetch(
@@ -357,7 +357,7 @@ export async function populateDropdowns(
       setSelIndiaData,
       setSelStateData,
       setSwitchDisplay,
-      setSelDistrictsData, setHttpStatusCode, setHttpStatusMsg
+      setSelDistrictsData, setHttpStatusCode, setHttpStatusMsg, selSubgroup
     );
 }
 

@@ -38,7 +38,8 @@ export const Map = ({
   graphTitle,
   graphTimeperiod,
   graphUnit,
-  toggleStateBurden
+  toggleStateBurden,
+  selSubgroupName
 }) => {
 
 
@@ -51,10 +52,10 @@ export const Map = ({
   const dimensions = useResizeObserver(wrapperRef);
   let [offset,setOffset] = useState(false);
   if (((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6) && toggleStateBurden === true)) {
-    mapTitle = `${graphTitle}, ${titleAreaName}, ${graphTimeperiod}`;
+    mapTitle = `${graphTitle}, ${titleAreaName}, ${graphTimeperiod} ${selSubgroupName}`;
   }
   else{
-    mapTitle =  `${graphTitle}, Number, ${titleAreaName}, ${graphTimeperiod}`;
+    mapTitle =  `${graphTitle}, Number, ${titleAreaName}, ${graphTimeperiod} ${selSubgroupName}`;
   }
 
   //For One Decimel Precision    

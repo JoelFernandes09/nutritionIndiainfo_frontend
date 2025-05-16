@@ -12,7 +12,7 @@ import {
 import fmt from 'indian-number-format'
 import './Bar.css'
 
-export const Bar = ({indicatorBar, graphTitle,graphTimeperiod, graphUnit,titleAreaName, toggleStateBurden, selLifecycle,selCategory,selIndicator})=>{
+export const Bar = ({indicatorBar, graphTitle,graphTimeperiod, graphUnit,titleAreaName, toggleStateBurden, selLifecycle,selCategory,selIndicator, setSelSubgroup, setSelSubgroupName})=>{
   const screen = useFullScreenHandle();
   let status = "By Background Characteristics";
   const listofSubgroup = ["Overall"," ","Male","Female","  ","Rural","Urban","   ","No Education","< 5 years completed","5-9 years completed","10-11 years completed","12+ years completed","    ","Poorest","Second","Middle","Fourth","Richest"];
@@ -196,7 +196,11 @@ export const Bar = ({indicatorBar, graphTitle,graphTimeperiod, graphUnit,titleAr
         .on('mousemove',(e,d)=>{
           return tooltipGBar.html(`<b>${yValue(d)}</b><br/>${decimalPrecision(xValue(d))}`).style("top", (e.pageY) - TOOLTIP_TOP_OFFSET+"px").style("left",(e.pageX) - TOOLTIP_LEFT_OFFSET +"px");
         })
-        .on('mouseout', ()=>tooltipGBar.style("visibility", "hidden"));
+        .on('mouseout', ()=>tooltipGBar.style("visibility", "hidden"))
+        .on('click', (e, d) => {
+          setSelSubgroup(d.subgroup_id);
+          setSelSubgroupName(`(${d.subgroup_name})`);
+        });
         
 
       chart.enter().append("text")
