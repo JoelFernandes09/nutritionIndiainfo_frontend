@@ -916,6 +916,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     selCategory={selCategory}
                     selIndicator={selIndicator}
                     sel_area_names = {sel_area_names}
+                    selSubgroupName = {selSubgroupName}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>

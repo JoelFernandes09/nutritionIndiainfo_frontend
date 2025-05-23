@@ -11,14 +11,14 @@ import {
   axisBottom,
   descending,
 } from 'd3';
-export const BarArea = ({graphTitle,graphTimeperiod, graphUnit,selIndiaData,level,selArea,titleAreaName,sel_area_names, areaName,selStateData, toggleStateBurden, selLifecycle,selCategory,selIndicator}) => {
+export const BarArea = ({graphTitle,graphTimeperiod, graphUnit,selIndiaData,level,selArea,titleAreaName,sel_area_names, areaName,selStateData, toggleStateBurden, selLifecycle,selCategory,selIndicator, selSubgroupName}) => {
 
   const screen=useFullScreenHandle();
   const svgRef = useRef();
   const trendWrapper = useRef();
   const  componentRef = useRef();
   const [fullscreen,setFullscreen] = useState(false);
-  let gBarTitle = `${graphTitle}, ${titleAreaName}, ${graphTimeperiod}`;
+  let gBarTitle = `${graphTitle}, ${titleAreaName}, ${graphTimeperiod} ${selSubgroupName}`;
 let dynamicRange;
   const margin = {
     left:160,
@@ -94,11 +94,11 @@ let dynamicRange;
       if(toggleStateBurden){
           // eslint-disable-next-line
           // selIndiaData = selIndiaData.filter(d => typeof d.data_value != 'undefined')
-          sortedIndiaData = selIndiaData.slice().sort((a, b) => descending(a.data_value, b.data_value))
+          sortedIndiaData = selIndiaData.slice().sort((a, b) => (b.data_value ?? -Infinity) - (a.data_value ?? -Infinity));
       }    
       else{
           // selIndiaData = selIndiaData.filter(d => typeof d.data_value_num != 'undefined')
-          sortedIndiaData = selIndiaData.slice().sort((a, b) => descending(a.data_value_num, b.data_value_num))
+          sortedIndiaData = selIndiaData.slice().sort((a, b) => (b.data_value ?? -Infinity) - (a.data_value ?? -Infinity));
       }
       setData(sortedIndiaData);
     }
@@ -110,11 +110,11 @@ let dynamicRange;
           // selStateData = selStateData.filter(d => typeof d.data_value != 'undefined')
           
 
-          sortedStateData = selStateData.slice().sort(alphabetically(false))
+          sortedStateData = selStateData.slice().sort((a, b) => (b.data_value ?? -Infinity) - (a.data_value ?? -Infinity));
       }    
       else{
           // selStateData = selStateData.filter(d => typeof d.data_value_num != 'undefined')
-          sortedStateData = selStateData.slice().sort((a, b) => descending(a.data_value_num, b.data_value_num))
+          sortedStateData = selStateData.slice().sort((a, b) => (b.data_value ?? -Infinity) - (a.data_value ?? -Infinity));
       }
       setData(sortedStateData)
     }
