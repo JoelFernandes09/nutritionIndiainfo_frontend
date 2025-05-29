@@ -50,7 +50,7 @@ export const Map = ({
   const componentRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
   let [offset,setOffset] = useState(false);
-  if (((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6) && toggleStateBurden === true)) {
+  if (((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6 || unit === 7) && toggleStateBurden === true)) {
     mapTitle = `${graphTitle}, ${titleAreaName}, ${graphTimeperiod}`;
   }
   else{
@@ -204,7 +204,7 @@ export const Map = ({
     let mergedGeometry = addProperties(geojson, data);
     let c2Value;
     let color_range
-    if (((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6) && toggleStateBurden === true) || (unit === 2))
+    if (((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6 || unit === 7) && toggleStateBurden === true) || (unit === 2))
     {
       c2Value = d => d.dataValue;
       color_range = _.map(data, d => {
@@ -247,7 +247,7 @@ export const Map = ({
     let arr1to10 = [18, 20, 108]
     let arr01to25 = [107]
     let arr3to5 = [321]
-    let arr5to30Num = [53]
+    let arr5to30Num = [53, 509]
     let arr20Kto35K = [359]
 
     // creating array using following above array
@@ -334,7 +334,7 @@ export const Map = ({
       sampleCategoricalData = ["<20,000", "20,000-24,999", "25,000-29,999", "30,000-34,999", ">=35,000", "No Data"]
     }
   
-  if ((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6) && toggleStateBurden === true) {
+  if ((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6 || unit === 7) && toggleStateBurden === true) {
     if(indicatorSense === 'Positive'){
       colorScale2 = scaleThreshold().domain([low, medium, high, highest])
         .range(["#8e0000", "#fe0000", "#ffc000", "#ffff00", "#00af50"]); 
@@ -408,7 +408,7 @@ export const Map = ({
           .style("font-size","12px");
       }
     };
-    if ((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit ===6)  && toggleStateBurden === true)
+    if ((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit ===6 || unit === 7)  && toggleStateBurden === true)
     {  
     svg
       .selectAll(".polygon")
@@ -591,7 +591,7 @@ export const Map = ({
 
     if((level === 1 && (null != selIndiaData && selIndiaData.length > 0)) || ((level === 2 || level === 3) && (null  != selStateData && selStateData.length > 0)))
     {
-    if (((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6)  && toggleStateBurden === false) || unit === 2) 
+    if (((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6 || unit === 7)  && toggleStateBurden === false) || unit === 2) 
     {
       
       svg.select(".legendQuant").append('text').text("1 dot =" + dotVal).style("font-size", "14px").attr("font-weight", "bold").attr("alignment-baseline","middle");
