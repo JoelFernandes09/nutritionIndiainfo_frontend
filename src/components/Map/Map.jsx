@@ -240,15 +240,16 @@ export const Map = ({
     
     
     let arr20to80 = [31,11,28,37,51,66,42,43,84,23,25,32,99,100,70,76,77,78,75,4,5,6,7,14,15,34,57,24,74,85,86,277,286,293,298,304,309,329,317,326,320,333,334,335,285,352,353,354,330,331,332,342,343,344,345,346,347,348,349,350,351,355,356,357,358,360,362,363,364,365,367,339,340,341, 375, 376 ,377, 378, 379, 380, 381, 382]
-    let arr5to30 = [89, 92, 96, 129, 131, 135, 137, 145, 148, 151, 154,203,204,205,206,207,208,209,210,211,212, 231, 234, 247, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 261, 267, 271,219,220,221,222,223,224,225,226,227,228,366, 369, 370, 371, 372, 373, 374, 383]
+    let arr5to30 = [89, 92, 96, 129, 131, 135, 137, 145, 148, 151, 154,203,204,205,206,207,208,209,210,211,212, 231, 234, 247, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 261, 267, 271,219,220,221,222,223,224,225,226,227,228, 369, 370, 371, 372, 373, 374, 383]
     let arr5to20 = [19, 21, 105]
     let arr10to40 = [12, 13, 17,200,214, 244, 245]
-    let arr5to60 = [1, 2, 26, 29, 62, 71, 72, 218,239, 248]
+    let arr5to60 = [1, 2, 26, 29, 71, 72, 218,239, 248]
     let arr1to10 = [18, 20, 108]
     let arr01to25 = [107]
     let arr3to5 = [321]
-    let arr5to30Num = [53, 509]
+    let arr5to30Num = [53, 366]
     let arr20Kto35K = [359]
+    let arr5to60Num = [62]
 
     // creating array using following above array
     let arrsuw = []
@@ -262,6 +263,7 @@ export const Map = ({
     arrsuw.push(...arr3to5);
     arrsuw.push(...arr5to30Num);
     arrsuw.push(...arr20Kto35K);
+    arrsuw.push(...arr5to60Num);
 
     if (arr5to20.includes(selIndicator)) {
       low = 5.0;
@@ -332,6 +334,13 @@ export const Map = ({
       high = 30000.0;
       highest = 35000.0;
       sampleCategoricalData = ["<20,000", "20,000-24,999", "25,000-29,999", "30,000-34,999", ">=35,000", "No Data"]
+    }
+    else if (arr5to60Num.includes(selIndicator)){
+      low = 5.0;
+      medium = 20.0;
+      high = 40.0;
+      highest = 60.0;
+      sampleCategoricalData = ["<5", "5-19.9", "20-39.9", "40-59.9", ">=60", "No Data"]
     }
   
   if ((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6 || unit === 7) && toggleStateBurden === true) {
@@ -587,6 +596,7 @@ export const Map = ({
             
 
     let formatter = format(".1f");
+  
     let myLegend;
 
     if((level === 1 && (null != selIndiaData && selIndiaData.length > 0)) || ((level === 2 || level === 3) && (null  != selStateData && selStateData.length > 0)))
@@ -597,7 +607,14 @@ export const Map = ({
       svg.select(".legendQuant").append('text').text("1 dot =" + dotVal).style("font-size", "14px").attr("font-weight", "bold").attr("alignment-baseline","middle");
     }
     else{
-       if (!arrsuw.includes(selIndicator)) {
+      if (selIndicator === 509) {
+        myLegend = legendColor()
+        .labelFormat(format(".0f"))
+        .title(`${unitName}`)
+        .titleWidth(180)
+        .scale(colorScale_new);
+      } 
+     else if (!arrsuw.includes(selIndicator)) {
       myLegend = legendColor()
       .labelFormat(formatter)
       .title(`${unitName}`)
@@ -606,7 +623,7 @@ export const Map = ({
     } 
     else{
       myLegend = legendColor()
-      .labelFormat(formatter)
+      //.labelFormat(formatter)
       .title(`${unitName}`)
       .titleWidth(180)
       .scale(colorScale_new);
