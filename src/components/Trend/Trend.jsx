@@ -84,7 +84,7 @@ export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, tog
     let cleanData = [];
     if(selIndicator === 56) // 56 for population
     {
-      indicatorTrend = indicatorTrend.filter((d) => {
+       indicatorTrend = indicatorTrend.filter((d) => {
         let currentDate = new Date();
         let currentYear = currentDate.getFullYear();
         if(d.timeperiod === "CENSUS 2001" || d.timeperiod === "CENSUS 2011" ||  d.timeperiod === "Population Projections 2021" || d.timeperiod === `Population Projections ${currentYear}`)
@@ -323,7 +323,7 @@ export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, tog
     }
 
     let offSet = 0;
-    if(graphUnit === "Deaths per 1000 live births")  //extra space for long string
+    if(graphUnit === "Deaths per 1000 live births" || graphUnit === "Deaths per 1,00,000 live births")  //extra space for long string
       offSet = 40
     svg.append("text")
     .attr("transform", "rotate(-0)")
