@@ -11,7 +11,7 @@ import {
   axisBottom,
   descending,
 } from 'd3';
-export const BarArea = ({graphTitle,graphTimeperiod, graphUnit,selIndiaData,level,selArea,titleAreaName,sel_area_names, areaName,selStateData, toggleStateBurden, selLifecycle,selCategory,selIndicator}) => {
+export const BarArea = ({graphTitle,graphTimeperiod, graphUnit,selIndiaData,level,selArea,titleAreaName,sel_area_names, areaName,selStateData, toggleStateBurden, selLifecycle,selCategory,selIndicator, indicatorTitle}) => {
 
   const screen=useFullScreenHandle();
   const svgRef = useRef();
@@ -430,7 +430,7 @@ let dynamicRange;
         <FullScreen  className="my-fullScreen w-full bg-white" handle={screen} onChange={reportChange} alt="State wise NFHS-5 Reports">
           <div className='static relative w-full mt-10 md:mt-0 lg:mt-0' id="h_bar" alt="State wise NFHS-5 Reports">
             <div className="block absolute w-full max-h-max right-5" style={{zIndex:1}} alt="State wise NFHS-5 Reports">
-              <SideNavFirst table={table} graphTitle={graphTitle} id="svgBarArea" dataField="area" columnName="Area" screen={screen} title={gBarTitle}  componentRef={ componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator}/>
+              <SideNavFirst table={table} graphTitle={graphTitle} id="svgBarArea" dataField="area" columnName="Area" screen={screen} title={gBarTitle}  componentRef={ componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator} indicatorTitle={indicatorTitle}/>
             </div>
             <div className='relative  w-full h-full pb-3 pt-1 pr-3' id="svgBarArea" ref={componentRef} alt="State wise NFHS-5 Reports">
             <div className="absolute  right-5 left-5 mx-10 w-auto top-1">

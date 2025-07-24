@@ -17,7 +17,7 @@ import "./SideNav.css";
 import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
 
-const SideNavFirst = ({table,graphTitle,id,dataField,columnName,screen,title,componentRef,selLifecycle,selCategory,selIndicator})=>{
+const SideNavFirst = ({table,graphTitle,id,dataField,columnName,screen,title,componentRef,selLifecycle,selCategory,selIndicator, indicatorTitle})=>{
 
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenTable, setIsOpenTable] = useState(false);
@@ -34,32 +34,32 @@ const SideNavFirst = ({table,graphTitle,id,dataField,columnName,screen,title,com
 
     // downloaded image name 
     if(id==="svgMap"){
-        imageNameJpeg = `${graphTitle}_map.jpeg`;
-        imageNamePng = `${graphTitle}_map.png`;
-        imageNameSvg = `${graphTitle}_map.svg`;
-        imageNamePdf = `${graphTitle}_map.pdf`;
-        imageNameCsv = `${graphTitle}_map.csv`;
+        imageNameJpeg = `${indicatorTitle}_map.jpeg`;
+        imageNamePng = `${indicatorTitle}_map.png`;
+        imageNameSvg = `${indicatorTitle}_map.svg`;
+        imageNamePdf = `${indicatorTitle}_map.pdf`;
+        imageNameCsv = `${indicatorTitle}_map.csv`;
     }
     else if(id==="svgBarArea"){
-        imageNameJpeg = `${graphTitle}_barArea.jpeg`;
-        imageNamePng = `${graphTitle}_barArea.png`;
-        imageNameSvg = `${graphTitle}_barArea.svg`;
-        imageNamePdf = `${graphTitle}_barArea.pdf`;
-        imageNameCsv = `${graphTitle}_barArea.csv`;
+        imageNameJpeg = `${indicatorTitle}_barArea.jpeg`;
+        imageNamePng = `${indicatorTitle}_barArea.png`;
+        imageNameSvg = `${indicatorTitle}_barArea.svg`;
+        imageNamePdf = `${indicatorTitle}_barArea.pdf`;
+        imageNameCsv = `${indicatorTitle}_barArea.csv`;
     }
     else if(id==="svgBar"){
-        imageNameJpeg = `${graphTitle}_bar.jpeg`;
-        imageNamePng = `${graphTitle}_bar.png`;
-        imageNameSvg = `${graphTitle}_bar.svg`;
-        imageNamePdf = `${graphTitle}_bar.pdf`;
-        imageNameCsv = `${graphTitle}_bar.csv`;
+        imageNameJpeg = `${indicatorTitle}_bar.jpeg`;
+        imageNamePng = `${indicatorTitle}_bar.png`;
+        imageNameSvg = `${indicatorTitle}_bar.svg`;
+        imageNamePdf = `${indicatorTitle}_bar.pdf`;
+        imageNameCsv = `${indicatorTitle}_bar.csv`;
     }
     else{
-        imageNameJpeg = `${graphTitle}_trend.jpeg`;
-        imageNamePng = `${graphTitle}_trend.png`;
-        imageNameSvg = `${graphTitle}_trend.svg`;
-        imageNamePdf = `${graphTitle}_trend.pdf`;
-        imageNameCsv = `${graphTitle}_trend.csv`;
+        imageNameJpeg = `${indicatorTitle}_trend.jpeg`;
+        imageNamePng = `${indicatorTitle}_trend.png`;
+        imageNameSvg = `${indicatorTitle}_trend.svg`;
+        imageNamePdf = `${indicatorTitle}_trend.pdf`;
+        imageNameCsv = `${indicatorTitle}_trend.csv`;
     }
     
     const togglePopup = () => {

@@ -237,7 +237,8 @@ export async function populateDropdowns(
   setGraphTimeperiod,
   setIndicatorSense,
   setNote,
-  queryIndicator,setHttpStatusCode, setHttpStatusMsg
+  queryIndicator,setHttpStatusCode, setHttpStatusMsg,
+  setInidcatorTitle
 ) {
 
   const solr_url_6 = await fetch(
@@ -275,6 +276,7 @@ export async function populateDropdowns(
         
         if(passedIndicator)
         {
+          setInidcatorTitle(passedIndicator.title)
           setSelIndicator(passedIndicator.value);
           setIndicatorSense(passedIndicator.indi_sense);
           setGraphTitle(passedIndicator.indicator_name);
@@ -285,6 +287,7 @@ export async function populateDropdowns(
         }
         } 
         else {
+          setInidcatorTitle(solr_body_6.result.docs[0].title)
           setSelIndicator(solr_body_6.result.docs[0].value);
           setIndicatorSense(solr_body_6.result.docs[0].indi_sense);
           setGraphTitle(solr_body_6.result.docs[0].indicator_name);

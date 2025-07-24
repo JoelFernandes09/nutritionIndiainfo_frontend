@@ -141,6 +141,7 @@ export const Dropdown = () => {
   const [selDistrictsData, setSelDistrictsData] = useState(null);
   const [toggleStateBurden, setToggleStateBurden] = useState(true);
   const [note, setNote] = useState(null);
+  const [indicatorTitle, setInidcatorTitle] = useState('');
 
   let burdenIndicators = [34, 43, 47, 36, 37, 51, 42, 63, 56, 31, 78, 66];
 
@@ -181,7 +182,8 @@ export const Dropdown = () => {
         setNote,
         queryIndicator,
         setHttpStatusCode,
-        setHttpStatusMsg
+        setHttpStatusMsg,
+        setInidcatorTitle
       );
       setIsSelected(true);
     }
@@ -310,7 +312,8 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
       setNote,
       null,
       setHttpStatusCode,
-      setHttpStatusMsg
+      setHttpStatusMsg,
+      setInidcatorTitle
     );
     setToggleStateBurden(true);
     setIsSelected(true);
@@ -345,7 +348,8 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
       setNote,
       null,
       setHttpStatusCode,
-      setHttpStatusMsg
+      setHttpStatusMsg,
+      setInidcatorTitle
     );
     setToggleStateBurden(true);
     setIsSelected(true);
@@ -370,6 +374,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
       setNote(indiNotes);
       setUnit(indiObject.unit_id);
       setGraphUnit(indiObject.unit_name);
+      setInidcatorTitle(indiObject.title);
     }
     let solr_url;
     solr_url = await fetch(
@@ -797,6 +802,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     selCategory={selCategory}
                     selIndicator={selIndicator}
                     note={note}
+                    indicatorTitle={indicatorTitle}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>
@@ -837,6 +843,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     areaName={areaName}
                     titleAreaName={titleAreaName}
                     toggleStateBurden={toggleStateBurden}
+                    indicatorTitle={indicatorTitle}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>
@@ -867,6 +874,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     selCategory={selCategory}
                     selIndicator={selIndicator}
                     sel_area_names = {sel_area_names}
+                    indicatorTitle={indicatorTitle}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>
@@ -888,6 +896,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     toggleStateBurden={toggleStateBurden}
                     selLifecycle={selLifecycle}
                     selCategory={selCategory}
+                    indicatorTitle={indicatorTitle}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>

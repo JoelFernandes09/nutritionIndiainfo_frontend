@@ -12,7 +12,7 @@ import {
 import fmt from 'indian-number-format'
 import './Bar.css'
 
-export const Bar = ({indicatorBar, graphTitle,graphTimeperiod, graphUnit,titleAreaName, toggleStateBurden, selLifecycle,selCategory,selIndicator})=>{
+export const Bar = ({indicatorBar, graphTitle,graphTimeperiod, graphUnit,titleAreaName, toggleStateBurden, selLifecycle,selCategory,selIndicator, indicatorTitle})=>{
   const screen = useFullScreenHandle();
   let status = "By Background Characteristics";
   const listofSubgroup = ["Overall"," ","Male","Female","  ","Rural","Urban","   ","No Education","< 5 years completed","5-9 years completed","10-11 years completed","12+ years completed","    ","Poorest","Second","Middle","Fourth","Richest"];
@@ -273,7 +273,7 @@ export const Bar = ({indicatorBar, graphTitle,graphTimeperiod, graphUnit,titleAr
       <FullScreen  className="w-full bg-white h-full" handle={screen} onChange={reportChange}>
 				<div className='relative w-full h-full'>
 					<div className="block absolute w-full max-h-max right-5" style={{zIndex:1}}>
-            <SideNavFirst table={table} graphTitle={graphTitle} id="svgBar" dataField="subgroup" columnName="Subgroup"  screen={screen} title={gBarTitle}  componentRef={ componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator}/>
+            <SideNavFirst table={table} graphTitle={graphTitle} id="svgBar" dataField="subgroup" columnName="Subgroup"  screen={screen} title={gBarTitle}  componentRef={ componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator} indicatorTitle={indicatorTitle}/>
           </div>
           <div className='relative  w-full pb-3 pt-1 pr-3 ' id="svgBar" ref={ componentRef}>
           <div className="absolute   right-5 left-5 mx-10 w-auto top-1">

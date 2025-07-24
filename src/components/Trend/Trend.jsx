@@ -25,7 +25,7 @@ let margin = {
 };
 
 
-export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, toggleStateBurden,selLifecycle,selCategory,selIndicator,note}) => { 
+export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, toggleStateBurden,selLifecycle,selCategory,selIndicator,note, indicatorTitle}) => { 
   let [data, setData] = useState(null);
   const svgRef = useRef();
   const trendWrapper = useRef();
@@ -383,7 +383,7 @@ noteDiv = <div className=" absolute left-2 h-10 text-xs"><b>Note: </b>{note}</di
       <FullScreen  className="w-full bg-white h-full" handle={screen} onChange={reportChange}>
         <div className='static relative w-full h-full'>
           <div className="block absolute w-full max-h-max right-5" style={{zIndex:2}}>
-            <SideNavSecond   table={table} graphTitle={graphTitle} id="svgTrend" dataField="timeperiod" columnName="Time Period"  Start="Start" End="End" screen={screen} title={title}  componentRef={componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator}/>
+            <SideNavSecond   table={table} graphTitle={graphTitle} id="svgTrend" dataField="timeperiod" columnName="Time Period"  Start="Start" End="End" screen={screen} title={title}  componentRef={componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator} indicatorTitle={indicatorTitle}/>
           </div>
           <div className='relative w-full h-full pb-3 pt-1 pr-3' id="svgTrend" ref={componentRef}>
             <div className="text-center absolute right-5 left-5 mx-10 w-auto  font-bold  text-xs md:text-sm my-trend-title">{`Trend of ${graphTitle}, ${titleAreaName}`}</div>

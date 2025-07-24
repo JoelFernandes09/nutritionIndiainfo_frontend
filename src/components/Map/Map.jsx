@@ -38,7 +38,8 @@ export const Map = ({
   graphTitle,
   graphTimeperiod,
   graphUnit,
-  toggleStateBurden
+  toggleStateBurden,
+  indicatorTitle
 }) => {
 
 
@@ -737,7 +738,7 @@ export const Map = ({
       
 			<div className='relative w-full h-full'>
 			  <div className="block absolute w-auto max-h-max left-15 right-5" style={{zIndex:2}}>
-          <SideNavFirst table={table} graphTitle={graphTitle} id="svgMap" dataField="area" columnName="Area" screen={screen} title={mapTitle} timePeriod={graphTimeperiod} componentRef={componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator}/>
+          <SideNavFirst table={table} graphTitle={graphTitle} id="svgMap" dataField="area" columnName="Area" screen={screen} title={mapTitle} timePeriod={graphTimeperiod} componentRef={componentRef} selLifecycle={selLifecycle} selCategory ={selCategory} selIndicator={selIndicator} indicatorTitle={indicatorTitle}/>
         </div>
         <div className='relative  w-full pb-3 pt-1 pr-3' id="svgMap" ref={componentRef}>
           <div className="absolute  right-5 left-5 mx-10 w-auto top-1">
