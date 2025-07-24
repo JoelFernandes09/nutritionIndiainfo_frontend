@@ -393,13 +393,15 @@ let dynamicRange;
       if(toggleStateBurden){
         table.push({
           area:data[i].area_name,
-          [graphTitle]:decimalPrecision(data[i].data_value)
+          [graphTitle]:decimalPrecision(data[i].data_value),
+          'Timeperiod': graphTimeperiod,
         })
       }
       else{
         table.push({
           area:data[i].area_name,
-          [graphTitle]:fmt.format(data[i].data_value_num)
+          [graphTitle]:fmt.format(data[i].data_value_num),
+          'Timeperiod': graphTimeperiod,
         })
       }
     }

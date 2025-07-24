@@ -34,32 +34,32 @@ const SideNavFirst = ({table,graphTitle,id,dataField,columnName,screen,title,com
 
     // downloaded image name 
     if(id==="svgMap"){
-        imageNameJpeg = 'map.jpeg';
-        imageNamePng = 'map.png';
-        imageNameSvg = 'map.svg';
-        imageNamePdf = 'map.pdf'
-        imageNameCsv = 'map.csv'
+        imageNameJpeg = `${graphTitle}_map.jpeg`;
+        imageNamePng = `${graphTitle}_map.png`;
+        imageNameSvg = `${graphTitle}_map.svg`;
+        imageNamePdf = `${graphTitle}_map.pdf`;
+        imageNameCsv = `${graphTitle}_map.csv`;
     }
     else if(id==="svgBarArea"){
-        imageNameJpeg = 'barArea.jpeg';
-        imageNamePng = 'barArea.png';
-        imageNameSvg = 'barArea.svg';
-        imageNamePdf = 'barArea.pdf'
-        imageNameCsv = 'barArea.csv'
+        imageNameJpeg = `${graphTitle}_barArea.jpeg`;
+        imageNamePng = `${graphTitle}_barArea.png`;
+        imageNameSvg = `${graphTitle}_barArea.svg`;
+        imageNamePdf = `${graphTitle}_barArea.pdf`;
+        imageNameCsv = `${graphTitle}_barArea.csv`;
     }
     else if(id==="svgBar"){
-        imageNameJpeg = 'bar.jpeg';
-        imageNamePng = 'bar.png';
-        imageNameSvg = 'bar.svg';
-        imageNamePdf = 'bar.pdf'
-        imageNameCsv = 'bar.csv'
+        imageNameJpeg = `${graphTitle}_bar.jpeg`;
+        imageNamePng = `${graphTitle}_bar.png`;
+        imageNameSvg = `${graphTitle}_bar.svg`;
+        imageNamePdf = `${graphTitle}_bar.pdf`;
+        imageNameCsv = `${graphTitle}_bar.csv`;
     }
     else{
-        imageNameJpeg = 'trend.jpeg';
-        imageNamePng = 'trend.png';
-        imageNameSvg = 'trend.svg';
-        imageNamePdf = 'trend.pdf'
-        imageNameCsv = 'trend.csv'
+        imageNameJpeg = `${graphTitle}_trend.jpeg`;
+        imageNamePng = `${graphTitle}_trend.png`;
+        imageNameSvg = `${graphTitle}_trend.svg`;
+        imageNamePdf = `${graphTitle}_trend.pdf`;
+        imageNameCsv = `${graphTitle}_trend.csv`;
     }
     
     const togglePopup = () => {
