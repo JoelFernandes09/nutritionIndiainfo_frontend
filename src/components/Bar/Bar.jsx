@@ -89,7 +89,7 @@ export const Bar = ({indicatorBar, graphTitle,graphTimeperiod, graphUnit,titleAr
   }, []);
 
   
-  gBarTitle = `${graphTitle}, ${titleAreaName}, ${graphTimeperiod}`;
+  gBarTitle = `${graphTitle} ${!toggleStateBurden && '(burden)'}, ${titleAreaName}, ${graphTimeperiod}`;
  
   let windowWidth = window.screen.width;
   let windowHeight = window.screen.height;

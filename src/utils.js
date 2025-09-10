@@ -276,10 +276,11 @@ export async function populateDropdowns(
         
         if(passedIndicator)
         {
+          let indiName = [53, 62, 366].includes(passedIndicator.value) ? passedIndicator.title : passedIndicator.indicator_name; // Short Name of IMR, NMR & U5MR
           setInidcatorTitle(passedIndicator.title)
           setSelIndicator(passedIndicator.value);
           setIndicatorSense(passedIndicator.indi_sense);
-          setGraphTitle(passedIndicator.indicator_name);
+          setGraphTitle(indiName);
           indiVal = passedIndicator.value;
           setUnit(passedIndicator.unit_id)
           setGraphUnit(passedIndicator.unit_name)
@@ -287,10 +288,11 @@ export async function populateDropdowns(
         }
         } 
         else {
+          let indiName = [53, 62, 366].includes(solr_body_6.result.docs[0].value) ? solr_body_6.result.docs[0].title : solr_body_6.result.docs[0].indicator_name; // Short Name of IMR, NMR & U5MR
           setInidcatorTitle(solr_body_6.result.docs[0].title)
           setSelIndicator(solr_body_6.result.docs[0].value);
           setIndicatorSense(solr_body_6.result.docs[0].indi_sense);
-          setGraphTitle(solr_body_6.result.docs[0].indicator_name);
+          setGraphTitle(indiName);
           indiVal = solr_body_6.result.docs[0].value;
           setUnit(solr_body_6.result.docs[0].unit_id)
           setGraphUnit(solr_body_6.result.docs[0].unit_name)

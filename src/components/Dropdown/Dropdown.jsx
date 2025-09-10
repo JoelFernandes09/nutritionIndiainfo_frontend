@@ -367,7 +367,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
     let indiObject = indicatorDropdownOpt.filter((f) => f.value === val)[0];
     if (indiObject) {
       let indiSense = indiObject.indi_sense;
-      let indiName = indiObject.indicator_name;
+      const indiName = [53, 62, 366].includes(indiObject.value) ? indiObject.title : indiObject.indicator_name; // Short Name of IMR, NMR & U5MR
       let indiNotes = indiObject.notes;
       setGraphTitle(indiName);
       setIndicatorSense(indiSense);
