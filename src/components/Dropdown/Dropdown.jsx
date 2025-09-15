@@ -803,6 +803,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     selIndicator={selIndicator}
                     note={note}
                     indicatorTitle={indicatorTitle}
+                    timeperiodName={graphTimeperiod}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>
@@ -844,6 +845,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     titleAreaName={titleAreaName}
                     toggleStateBurden={toggleStateBurden}
                     indicatorTitle={indicatorTitle}
+                    timeperiodName={graphTimeperiod}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>
@@ -875,6 +877,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     selIndicator={selIndicator}
                     sel_area_names = {sel_area_names}
                     indicatorTitle={indicatorTitle}
+                    timeperiodName={graphTimeperiod}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>
@@ -897,6 +900,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
                     selLifecycle={selLifecycle}
                     selCategory={selCategory}
                     indicatorTitle={indicatorTitle}
+                    timeperiodName={graphTimeperiod}
                   />
                 ) : (
                   <div id='msg'>No data: please select another area</div>

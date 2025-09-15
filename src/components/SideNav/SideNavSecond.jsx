@@ -17,8 +17,10 @@ import "./SideNav.css";
 import * as htmlToImage from 'html-to-image';
 import download from 'downloadjs';
 
-const SideNavSecond = ({table,graphTitle,id,dataField,columnName,Start,End,screen,title,componentRef,selLifecycle,selCategory,selIndicator, indicatorTitle})=>{
-
+const SideNavSecond = ({table,graphTitle,id,dataField,columnName,Start,End,screen,title,componentRef,selLifecycle,selCategory,selIndicator, indicatorTitle, areaName, timeperiodName, isBurden})=>{
+    if(timeperiodName) timeperiodName = timeperiodName.replace(" ", "_").replace("-", "_");
+    else timeperiodName = '';
+    if(isBurden) indicatorTitle = `${indicatorTitle}_Burden`
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenTable, setIsOpenTable] = useState(false);
     const [isOpenShare,setIsOpenShare]=useState(false);
@@ -34,32 +36,32 @@ const SideNavSecond = ({table,graphTitle,id,dataField,columnName,Start,End,scree
 
     // downloaded image name 
     if(id==="svgMap"){
-        imageNameJpeg = `${indicatorTitle}_map.jpeg`;
-        imageNamePng = `${indicatorTitle}_map.png`;
+        imageNameJpeg = `${indicatorTitle}_${areaName}_${timeperiodName}_Map.jpeg`;
+        imageNamePng = `${indicatorTitle}_${areaName}_${timeperiodName}_Map.png`;
         // imageNameSvg = `${indicatorTitle}_map.svg`;
-        imageNamePdf = `${indicatorTitle}_map.pdf`;
-        imageNameCsv = `${indicatorTitle}_map.csv`;
+        imageNamePdf = `${indicatorTitle}_${areaName}_${timeperiodName}_Map.pdf`;
+        imageNameCsv = `${indicatorTitle}_${areaName}_${timeperiodName}_Map.csv`;
     }
     else if(id==="svgBarArea"){
-        imageNameJpeg = `${indicatorTitle}_barArea.jpeg`;
-        imageNamePng = `${indicatorTitle}_barArea.png`;
+        imageNameJpeg = `${indicatorTitle}_${areaName}_${timeperiodName}_BarArea.jpeg`;
+        imageNamePng = `${indicatorTitle}_${areaName}_${timeperiodName}_BarArea.png`;
         // imageNameSvg = `${indicatorTitle}_barArea.svg`;
-        imageNamePdf = `${indicatorTitle}_barArea.pdf`;
-        imageNameCsv = `${indicatorTitle}_barArea.csv`;
+        imageNamePdf = `${indicatorTitle}_${areaName}_${timeperiodName}_BarArea.pdf`;
+        imageNameCsv = `${indicatorTitle}_${areaName}_${timeperiodName}_BarArea.csv`;
     }
     else if(id==="svgBar"){
-        imageNameJpeg = `${indicatorTitle}_bar.jpeg`;
-        imageNamePng = `${indicatorTitle}_bar.png`;
+        imageNameJpeg = `${indicatorTitle}_${areaName}_${timeperiodName}_Bar.jpeg`;
+        imageNamePng = `${indicatorTitle}_${areaName}_${timeperiodName}_Bar.png`;
         // imageNameSvg = `${indicatorTitle}_bar.svg`;
-        imageNamePdf = `${indicatorTitle}_bar.pdf`;
-        imageNameCsv = `${indicatorTitle}_bar.csv`;
+        imageNamePdf = `${indicatorTitle}_${areaName}_${timeperiodName}_Bar.pdf`;
+        imageNameCsv = `${indicatorTitle}_${areaName}_${timeperiodName}_Bar.csv`;
     }
     else{
-        imageNameJpeg = `${indicatorTitle}_trend.jpeg`;
-        imageNamePng = `${indicatorTitle}_trend.png`;
+        imageNameJpeg = `${indicatorTitle}_${areaName}_${timeperiodName}_Trend.jpeg`;
+        imageNamePng = `${indicatorTitle}_${areaName}_${timeperiodName}_Trend.png`;
         // imageNameSvg = `${indicatorTitle}_trend.svg`;
-        imageNamePdf = `${indicatorTitle}_trend.pdf`;
-        imageNameCsv = `${indicatorTitle}_trend.csv`;
+        imageNamePdf = `${indicatorTitle}_${areaName}_${timeperiodName}_Trend.pdf`;
+        imageNameCsv = `${indicatorTitle}_${areaName}_${timeperiodName}_Trend.csv`;
     }
     
     const togglePopup = () => {
