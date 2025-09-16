@@ -578,7 +578,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
         <li className='nav-item'>
           <a
             href={() => false}
-            className={`nav-link radius2 ${toggleStateBurden && 'active '}`}
+            className={`nav-link ${!graphTimeperiod.includes('SRS') && 'radius2'} ${toggleStateBurden && 'active '}`}
             id='Prevalence'
             data-toggle='tab'
             role='tab'
@@ -591,7 +591,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
             Prevalence
           </a>
         </li>
-        <li className='nav-item nav-item-right'>
+        {!graphTimeperiod.includes('SRS') && <li className='nav-item nav-item-right'>
           <a
             href={() => false}
             className={`nav-link radius ${!toggleStateBurden && 'active '}`}
@@ -606,7 +606,7 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
           >
             Burden
           </a>
-        </li>
+        </li>}
       </ul>
     );
   } else {
