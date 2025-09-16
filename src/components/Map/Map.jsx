@@ -53,10 +53,10 @@ export const Map = ({
   const dimensions = useResizeObserver(wrapperRef);
   let [offset,setOffset] = useState(false);
   if (((unit === 1 || unit === 4 || unit === 3 || unit === 5 || unit === 6 || unit === 7) && toggleStateBurden === true)) {
-    mapTitle = `${graphTitle} ${!toggleStateBurden && '(Burden)'}, ${titleAreaName}, ${graphTimeperiod}`;
+    mapTitle = `${graphTitle}${toggleStateBurden ? '' : ' (Burden)'}, ${titleAreaName}, ${graphTimeperiod}`;
   }
   else{
-    mapTitle =  `${graphTitle} ${!toggleStateBurden && '(Burden)'}, Number, ${titleAreaName}, ${graphTimeperiod}`;
+    mapTitle =  `${graphTitle}${toggleStateBurden ? '' : ' (Burden)'}, Number, ${titleAreaName}, ${graphTimeperiod}`;
   }
 
   //For One Decimel Precision    

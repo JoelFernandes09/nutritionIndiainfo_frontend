@@ -341,7 +341,7 @@ export const Trend = ({indicatorTrend, graphTitle, graphUnit, titleAreaName, tog
     return <pre>Loading...</pre>;
   }
 
-  let title=`Trend of ${graphTitle} ${!toggleStateBurden && '(Burden)'}, ${titleAreaName}`;
+  let title=`Trend of ${graphTitle}${toggleStateBurden ? '' : ' (Burden)'}, ${titleAreaName}`;
 
   let table=[];
   if(data ){

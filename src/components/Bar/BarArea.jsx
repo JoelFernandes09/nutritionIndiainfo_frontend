@@ -18,7 +18,7 @@ export const BarArea = ({graphTitle,graphTimeperiod, graphUnit,selIndiaData,leve
   const trendWrapper = useRef();
   const  componentRef = useRef();
   const [fullscreen,setFullscreen] = useState(false);
-  let gBarTitle = `${graphTitle} ${!toggleStateBurden && '(Burden)'}, ${titleAreaName}, ${graphTimeperiod}`;
+  let gBarTitle = `${graphTitle}${toggleStateBurden ? '' : ' (Burden)'}, ${titleAreaName}, ${graphTimeperiod}`;
 let dynamicRange;
   const margin = {
     left:160,
