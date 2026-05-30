@@ -395,23 +395,26 @@ for (let i = 0; i < areaData.result.docs.length; i++) {
     if (solr_url.status === 200) {
       setTimeperiodDropdownOpt(solr_body_1.result.docs);
       if (solr_body_1.result.docs) {
-        solr_body_1.result.docs.forEach((timeperiod) => {
-          if (timeperiod.value === selTimeperiod) {
-            flag = true;
-          }
-        });
-        if (!flag) {
-          if (typeof solr_body_1.result.docs[0] !== 'undefined') {
-            // added this condition to resolve issue when UT data not present for CNNS Obesity in 10-14 year old
-            timeValue = solr_body_1.result.docs[0].value;
-            setSelTimeperiod(solr_body_1.result.docs[0].value);
-            setGraphTimeperiod(solr_body_1.result.docs[0].title);
-          } else {
-            setSelTimeperiod('');
-            setGraphTimeperiod('');
-            timeValue = '';
-          }
-        }
+        setSelTimeperiod(solr_body_1.result.docs[0].value);
+        setGraphTimeperiod(solr_body_1.result.docs[0].title);
+        // solr_body_1.result.docs.forEach((timeperiod) => {
+        //   if (timeperiod.value === selTimeperiod) {
+        //     flag = true;
+        //   }
+        // });
+        // if (!flag) {
+        //   if (typeof solr_body_1.result.docs[0] !== 'undefined') {
+        //     // added this condition to resolve issue when UT data not present for CNNS Obesity in 10-14 year old
+        //     timeValue = solr_body_1.result.docs[0].value;
+        //     setSelTimeperiod(solr_body_1.result.docs[0].value);
+        //     setGraphTimeperiod(solr_body_1.result.docs[0].title);
+        //   } else {
+        //     console.log('Else')
+        //     setSelTimeperiod('');
+        //     setGraphTimeperiod('');
+        //     timeValue = '';
+        //   }
+        // }
       }
     }
 
